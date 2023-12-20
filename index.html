@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pedra, Papel e Tesoura</title>
-    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="title">
@@ -12,28 +11,22 @@
     </div>
 
     <div class="game">
-      <h3 class="resultTitle">Escolha sua arma</h3>
-      <p class="resultPrase">O primeiro a marcar 5 pontos ganha o jogo</p>
-      <div class="play">
-        <div class="Score">
-          <div class="playPlayer" id="icon">❓</div>
-          <p class="scorePlayer">Jogador: 0</p>
+      <h3>Escolha sua arma</h3>
+      <p>O primeiro a marcar 5 pontos ganha o jogo</p>
+      <div class="jogada">
+        <div class="playerScore">
+          <div>❓</div>
+          <p>Jogador: 0</p>
         </div>
-        <div class="Score">
-          <div class="playComp" id="icon">❓</div>
-          <p class="scoreComp">Computador: 0</p>
+        <div class="computerScore">
+          <div>❓</div>
+          <p>Computador: 0</p>
         </div>
       </div>
-      <div class="option">
-        <button class="btn btn-square" id="rockBtn">
-          <div class="Rock" id="icon">🪨</div>
-        </button>
-        <button class="btn btn-square" id="paperBtn">
-          <div class="Paper" id="icon">📃</div>
-        </button>
-        <button class="btn btn-square" id="scissorBtn">
-          <div class="Scissor" id="icon">✂️</div>
-        </button>
+      <div class="escolha">
+        <div class="pedra">🪨</div>
+        <div class="papel">📃</div>
+        <div class="tesoura">✂️</div>
       </div>
     </div>
 
