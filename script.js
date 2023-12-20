@@ -2,10 +2,47 @@ let playerScore = 0
 let computerScore = 0
 let roundWinner = ''
 
-//buttons
-rockBtn.addEventListener('click', () => handleClick('rock'))
-paperBtn.addEventListener('click', () => handleClick('paper'))
-scissorBtn.addEventListener('click', () => handleClick('scissor'))
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    roundWinner = 'tie'
+  }
+  if (
+    (playerSelection === 'PEDRA' && computerSelection === 'TESOURA') ||
+    (playerSelection === 'TESOURA' && computerSelection === 'PAPEL') ||
+    (playerSelection === 'PAPEL' && computerSelection === 'PEDRA')
+  ) {
+    playerScore++
+    roundWinner = 'player'
+  }
+  if (
+    (computerSelection === 'PEDRA' && playerSelection === 'TESOURA') ||
+    (computerSelection === 'TESOURA' && playerSelection === 'PAPEL') ||
+    (computerSelection === 'PAPEL' && playerSelection === 'PEDRA')
+  ) {
+    computerScore++
+    roundWinner = 'computer'
+  }
+
+  updateScoreMessage(roundWinner, playerSelection, computerSelection)
+}
+
+//jogada do computador
+function getRandomChoice() {
+  let randomNumber = Math.floor(Math.random() * 3)
+  switch (randomNumber) {
+    case 0:
+      return 'PEDRA'
+    case 1:
+      return 'PAPEL'
+    case 2:
+      return 'TESOURA'
+  }
+}
+
+//Quando acaba o jogo
+function isGameOver() {
+  return playerScore === 5 || computerScore === 5
+}
 
 //UI
 const scoreInfo = document.getElementById('scoreInfo')
@@ -16,89 +53,51 @@ const playerSign = document.getElementById('playerSign')
 const computerSign = document.getElementById('computerSign')
 const rockBtn = document.getElementById('rockBtn')
 const paperBtn = document.getElementById('paperBtn')
-const scissorBtn = document.getElementById('scissorBtn')
+const scissorsBtn = document.getElementById('scissorsBtn')
 
-//jogada do computador
-function getRandomChoice() {
-  let randomNumber = Math.floor(Math.random() * 3)
-  switch (randomNumber) {
-    case 0:
-      return 'rock'
-    case 1:
-      return 'paper'
-    case 2:
-      return 'scissor'
-  }
-}
+//buttons
+rockBtn.addEventListener('click', () => handleClick('PEDRA'))
+paperBtn.addEventListener('click', () => handleClick('PAPEL'))
+scissorsBtn.addEventListener('click', () => handleClick('TESOURA'))
 
 //jogada do Jogador
 function handleClick(playerSelection) {
   const computerSelection = getRandomChoice()
   playRound(playerSelection, computerSelection)
   updateChoices(playerSelection, computerSelection)
-}
-
-//Inicio do Jogo
-function playRound(playerSelection, computerSelection) {
-  //Empate
-  if (playerSelection === computerSelection) {
-    roundWinner = 'Empate!'
-  }
-  //Jogador vence
-  if (
-    (playerSelection === 'rock' && computerSelection === 'scissor')(
-      playerSelection === 'scissor' && computerSelection === 'paper'
-    )(playerSelection === 'paper' && computerSelection === 'rock')
-  ) {
-    playerScore++
-    roundWinner = 'Jogador'
-  }
-  //Computador vence
-  if (
-    (computerSelection === 'rock' && playerSelection === 'scissor')(
-      computerSelection === 'scissor' && playerSelection === 'paper'
-    )(computerSelection === 'paper' && playerSelection === 'rock')
-  ) {
-    computerScore++
-    roundWinner = 'Computador'
-  }
+  updateScore()
 }
 
 //Atualizar jogadas
 function updateChoices(playerSelection, computerSelection) {
   switch (playerSelection) {
-    case 'rock':
+    case 'PEDRA':
       playerSign.textContent = '🪨'
       break
-    case 'paper':
+    case 'PAPEL':
       playerSign.textContent = '📃'
       break
-    case 'scissor':
+    case 'TESOURA':
       playerSign.textContent = '✂️'
       break
   }
 
   switch (computerSelection) {
-    case 'rock':
-      computerSelection.textContent = '🪨'
+    case 'PEDRA':
+      computerSign.textContent = '🪨'
       break
-    case 'paper':
-      computerSelection.textContent = '📃'
+    case 'PAPEL':
+      computerSign.textContent = '📃'
       break
-    case 'scissor':
-      computerSelection.textContent = '✂️'
+    case 'TESOURA':
+      computerSign.textContent = '✂️'
       break
   }
 }
 
-//Quando acaba o jogo
-function isGameOver() {
-  return playerScore === 5 || computerScore === 5
-}
-
 //Atualizar a pontuacao
 function updateScore() {
-  if (roundWinner === 'Empate') {
+  if (roundWinner === 'tie') {
     scoreInfo.textContent = 'Deu empate!'
   } else if (roundWinner === 'player') {
     scoreInfo.textContent = 'Voce Venceu!'
@@ -108,4 +107,28 @@ function updateScore() {
 
   playerScorePara.textContent = `Player: ${playerScore}`
   computerScorePara.textContent = `Computer: ${computerScore}`
+}
+
+//Descricao da rodada
+function updateScoreMessage(winner, playerSelection, computerSelection) {
+  if (winner === 'player') {
+    scoreMessage.textContent = `${capitalizeFirstLetter(
+      playerSelection
+    )} vence ${computerSelection.toLowerCase()}`
+    return
+  }
+  if (winner === 'computer') {
+    scoreMessage.textContent = `${capitalizeFirstLetter(
+      playerSelection
+    )} é derrotado por ${computerSelection.toLowerCase()}`
+    return
+  }
+
+  scoreMessage.textContent = `${capitalizeFirstLetter(
+    playerSelection
+  )} empata com ${computerSelection.toLowerCase()}`
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
