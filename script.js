@@ -95,3 +95,17 @@ function updateChoices(playerSelection, computerSelection) {
 function isGameOver() {
   return playerScore === 5 || computerScore === 5
 }
+
+//Atualizar a pontuacao
+function updateScore() {
+  if (roundWinner === 'Empate') {
+    scoreInfo.textContent = 'Deu empate!'
+  } else if (roundWinner === 'player') {
+    scoreInfo.textContent = 'Voce Venceu!'
+  } else if (roundWinner === 'computer') {
+    scoreInfo.textContent = 'Voce Perdeu!'
+  }
+
+  playerScorePara.textContent = `Player: ${playerScore}`
+  computerScorePara.textContent = `Computer: ${computerScore}`
+}
