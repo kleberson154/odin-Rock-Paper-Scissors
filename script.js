@@ -5,7 +5,7 @@ let roundWinner = ''
 //buttons
 rockBtn.addEventListener('click', () => handleClick('rock'))
 paperBtn.addEventListener('click', () => handleClick('paper'))
-scissorsBtn.addEventListener('click', () => handleClick('scissor'))
+scissorBtn.addEventListener('click', () => handleClick('scissor'))
 
 //UI
 const scoreInfo = document.getElementById('scoreInfo')
@@ -17,10 +17,6 @@ const computerSign = document.getElementById('computerSign')
 const rockBtn = document.getElementById('rockBtn')
 const paperBtn = document.getElementById('paperBtn')
 const scissorBtn = document.getElementById('scissorBtn')
-
-function handleClick(playerSelection) {
-  const computerSelection = getRandomChoice()
-}
 
 //jogada do computador
 function getRandomChoice() {
@@ -39,6 +35,7 @@ function getRandomChoice() {
 function handleClick(playerSelection) {
   const computerSelection = getRandomChoice()
   playRound(playerSelection, computerSelection)
+  updateChoices(playerSelection, computerSelection)
 }
 
 //Inicio do Jogo
@@ -78,6 +75,18 @@ function updateChoices(playerSelection, computerSelection) {
       break
     case 'scissor':
       playerSign.textContent = '✂️'
+      break
+  }
+
+  switch (computerSelection) {
+    case 'rock':
+      computerSelection.textContent = '🪨'
+      break
+    case 'paper':
+      computerSelection.textContent = '📃'
+      break
+    case 'scissor':
+      computerSelection.textContent = '✂️'
       break
   }
 }
