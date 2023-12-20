@@ -90,3 +90,8 @@ function updateChoices(playerSelection, computerSelection) {
       break
   }
 }
+
+//Quando acaba o jogo
+function isGameOver() {
+  return playerScore === 5 || computerScore === 5
+}

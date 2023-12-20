@@ -62,7 +62,7 @@ body {
 
 #playerSign,
 #computerSign,
-#sign {
+.sign {
   font-size: 56px;
 }
 
