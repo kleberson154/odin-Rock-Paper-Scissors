@@ -1,5 +1,5 @@
-let playerPoint = 0
-let compPoint = 0
+let playerScore = 0
+let computerScore = 0
 let roundWinner = ''
 
 //buttons
@@ -24,5 +24,31 @@ function getRandomChoice() {
       return 'paper'
     case 2:
       return 'scissor'
+  }
+}
+
+//Inicio do Jogo
+function playRound(playerSelection, computerSelection) {
+  //Empate
+  if (playerSelection === computerSelection) {
+    roundWinner = 'Empate!'
+  }
+  //Jogador vence
+  if (
+    (playerSelection === 'rock' && computerSelection === 'scissor')(
+      playerSelection === 'scissor' && computerSelection === 'paper'
+    )(playerSelection === 'paper' && computerSelection === 'rock')
+  ) {
+    playerScore++
+    roundWinner = 'Jogador'
+  }
+  //Computador vence
+  if (
+    (computerSelection === 'rock' && playerSelection === 'scissor')(
+      computerSelection === 'scissor' && playerSelection === 'paper'
+    )(computerSelection === 'paper' && playerSelection === 'rock')
+  ) {
+    computerScore++
+    roundWinner = 'Computador'
   }
 }
