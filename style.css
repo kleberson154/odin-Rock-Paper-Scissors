@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&family=Rubik+Doodle+Shadow&display=swap');
 
 * {
   margin: 0;
@@ -16,7 +16,7 @@ body {
   height: 5rem;
   background: #3d3d3d;
   color: #17c0eb;
-  font-family: 'Rubik Bubbles', sans-serif;
+  font-family: 'Rubik Doodle Shadow', sans-serif;
   font-size: 3vh;
   display: flex;
   justify-content: center;
@@ -80,6 +80,6 @@ body {
 }
 
 .btn-square:hover {
-  background: #373737;
+  background: #0b586c;
   cursor: pointer;
 }
