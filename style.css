@@ -60,7 +60,9 @@ body {
   width: 50%;
 }
 
-#icon {
+#playerSign,
+#computerSign,
+#sign {
   font-size: 56px;
 }
 

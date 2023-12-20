@@ -3,12 +3,20 @@ let computerScore = 0
 let roundWinner = ''
 
 //buttons
-const rockBtn = document.getElementById('rockBtn')
-const paperBtn = document.getElementById('paperBtn')
-const scissorBtn = document.getElementById('scissorBtn')
 rockBtn.addEventListener('click', () => handleClick('rock'))
 paperBtn.addEventListener('click', () => handleClick('paper'))
 scissorsBtn.addEventListener('click', () => handleClick('scissor'))
+
+//UI
+const scoreInfo = document.getElementById('scoreInfo')
+const scoreMessage = document.getElementById('scoreMessage')
+const playerScorePara = document.getElementById('playerScore')
+const computerScorePara = document.getElementById('computerScore')
+const playerSign = document.getElementById('playerSign')
+const computerSign = document.getElementById('computerSign')
+const rockBtn = document.getElementById('rockBtn')
+const paperBtn = document.getElementById('paperBtn')
+const scissorBtn = document.getElementById('scissorBtn')
 
 function handleClick(playerSelection) {
   const computerSelection = getRandomChoice()
@@ -56,5 +64,20 @@ function playRound(playerSelection, computerSelection) {
   ) {
     computerScore++
     roundWinner = 'Computador'
+  }
+}
+
+//Atualizar jogadas
+function updateChoices(playerSelection, computerSelection) {
+  switch (playerSelection) {
+    case 'rock':
+      playerSign.textContent = '🪨'
+      break
+    case 'paper':
+      playerSign.textContent = '📃'
+      break
+    case 'scissor':
+      playerSign.textContent = '✂️'
+      break
   }
 }

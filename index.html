@@ -12,27 +12,29 @@
     </div>
 
     <div class="game">
-      <h3 class="resultTitle">Escolha sua arma</h3>
-      <p class="resultPrase">O primeiro a marcar 5 pontos ganha o jogo</p>
+      <h3 class="score-info" id="scoreInfo">Escolha sua arma</h3>
+      <p class="score-message" id="scoreMessage">
+        O primeiro a marcar 5 pontos ganha o jogo
+      </p>
       <div class="play">
         <div class="Score">
-          <div class="playPlayer" id="icon">❓</div>
-          <p class="scorePlayer">Jogador: 0</p>
+          <div class="sign" id="playerSign">❓</div>
+          <p class="score" id="playerScore">Jogador: 0</p>
         </div>
         <div class="Score">
-          <div class="playComp" id="icon">❓</div>
-          <p class="scoreComp">Computador: 0</p>
+          <div class="sign" id="computerSign">❓</div>
+          <p class="score" id="computerScore">Computador: 0</p>
         </div>
       </div>
       <div class="option">
         <button class="btn btn-square" id="rockBtn">
-          <div class="Rock" id="icon">🪨</div>
+          <div id="sign">🪨</div>
         </button>
         <button class="btn btn-square" id="paperBtn">
-          <div class="Paper" id="icon">📃</div>
+          <div id="sign">📃</div>
         </button>
         <button class="btn btn-square" id="scissorBtn">
-          <div class="Scissor" id="icon">✂️</div>
+          <div id="sign">✂️</div>
         </button>
       </div>
     </div>
