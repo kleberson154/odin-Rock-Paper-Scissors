@@ -27,6 +27,12 @@ function getRandomChoice() {
   }
 }
 
+//jogada do Jogador
+function handleClick(playerSelection) {
+  const computerSelection = getRandomChoice()
+  playRound(playerSelection, computerSelection)
+}
+
 //Inicio do Jogo
 function playRound(playerSelection, computerSelection) {
   //Empate
