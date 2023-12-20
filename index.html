@@ -11,25 +11,38 @@
     </div>
 
     <div class="game">
-      <h3>Escolha sua arma</h3>
-      <p>O primeiro a marcar 5 pontos ganha o jogo</p>
-      <div class="jogada">
-        <div class="playerScore">
-          <div>❓</div>
-          <p>Jogador: 0</p>
+      <h3 class="score-info" id="scoreInfo">Escolha sua arma</h3>
+      <p class="score-message" id="scoreMessage">
+        O primeiro a marcar 5 pontos ganha o jogo
+      </p>
+      <div class="play">
+        <div class="Score">
+          <div class="sign" id="playerSign">❓</div>
+          <p class="score" id="playerScore">Jogador: 0</p>
         </div>
-        <div class="computerScore">
-          <div>❓</div>
-          <p>Computador: 0</p>
+        <div class="Score">
+          <div class="sign" id="computerSign">❓</div>
+          <p class="score" id="computerScore">Computador: 0</p>
         </div>
       </div>
-      <div class="escolha">
-        <div class="pedra">🪨</div>
-        <div class="papel">📃</div>
-        <div class="tesoura">✂️</div>
+      <div class="buttons">
+        <button class="btn btn-square" id="rockBtn">
+          <div class="sign">🪨</div>
+        </button>
+        <button class="btn btn-square" id="paperBtn">
+          <div class="sign">📃</div>
+        </button>
+        <button class="btn btn-square" id="scissorsBtn">
+          <div class="sign">✂️</div>
+        </button>
       </div>
+      <div class="modal" id="endgameModal">
+        <p class="modal-title" id="endgameMsg"></p>
+        <button class="btn btn-restart" id="restartBtn">Jogar Novamente</button>
+      </div>
+      <div class="overlay" id="overlay"></div>
     </div>
 
-    <!-- <script src="./script.js"></script> -->
+    <script src="./script.js"></script>
   </body>
 </html>
