@@ -54,18 +54,34 @@ const computerSign = document.getElementById('computerSign')
 const rockBtn = document.getElementById('rockBtn')
 const paperBtn = document.getElementById('paperBtn')
 const scissorsBtn = document.getElementById('scissorsBtn')
+const endgameModal = document.getElementById('endgameModal')
+const endgameMsg = document.getElementById('endgameMsg')
+const overlay = document.getElementById('overlay')
+const restartBtn = document.getElementById('restartBtn')
 
 //buttons
 rockBtn.addEventListener('click', () => handleClick('PEDRA'))
 paperBtn.addEventListener('click', () => handleClick('PAPEL'))
 scissorsBtn.addEventListener('click', () => handleClick('TESOURA'))
+restartBtn.addEventListener('click', restartGame)
+overlay.addEventListener('click', closeEndgameModal)
 
 //jogada do Jogador
 function handleClick(playerSelection) {
+  if (isGameOver()) {
+    openEndgameModal()
+    return
+  }
+
   const computerSelection = getRandomChoice()
   playRound(playerSelection, computerSelection)
   updateChoices(playerSelection, computerSelection)
   updateScore()
+
+  if (isGameOver()) {
+    openEndgameModal()
+    setFinalMessage()
+  }
 }
 
 //Atualizar jogadas
@@ -131,4 +147,33 @@ function updateScoreMessage(winner, playerSelection, computerSelection) {
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
+}
+
+function openEndgameModal() {
+  endgameModal.classList.add('active')
+  overlay.classList.add('active')
+}
+
+function closeEndgameModal() {
+  endgameModal.classList.remove('active')
+  overlay.classList.remove('active')
+}
+
+function setFinalMessage() {
+  return playerScore > computerScore
+    ? (endgameMsg.textContent = 'Voce Ganhou!')
+    : (endgameMsg.textContent = 'Voce Perdeu...')
+}
+
+function restartGame() {
+  playerScore = 0
+  computerScore = 0
+  scoreInfo.textContent = 'Escolha sua arma'
+  scoreMessage.textContent = 'O primeiro a marcar 5 pontos ganha o jogo'
+  playerScorePara.textContent = 'Jogador: 0'
+  computerScorePara.textContent = 'Computador: 0'
+  playerSign.textContent = '❓'
+  computerSign.textContent = '❓'
+  endgameModal.classList.remove('active')
+  overlay.classList.remove('active')
 }
